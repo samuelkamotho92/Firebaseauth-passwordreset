@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-functions.js"></script>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Portifolio</title>
+</head>
+
+<body>
+    <nav class="nav-wrapper">
+        <a href="#" class="brand-logo">Smart Coders</a>
+        <a href="#" data-target="slidy" class="sidenav-trigger">
+            <i class="material-icons">menu</i>
+        </a>
+        <div class="container">
+            <ul class="right hide-on-med-and-down">
+                <li class="logged-in" style="display: none;"><a href="#"><i
+                            class="material-icons left">house</i>Home</a></li>
+                <!-- Dropdown Trigger -->
+                <li class="logged-in" style="display: none;"><a class="dropdown-trigger" href="#!"
+                        data-target="dropdown2">
+                        <i class="material-icons left">person</i>
+                        About me <i class="material-icons right">arrow_drop_down</i></a></li>
+                <li class="logged-out" style="display: none;">
+                    <a href="#modal2" class="modal-trigger ">Login
+                        <i class="material-icons left">account_circle</i>
+                    </a>
+                </li>
+                <li class="logged-in" style="display: none;">
+                    <a href="#modal3" class="modal-trigger">Account</a>
+                </li>
+                <li class="admin" style="display: none;"><a href="#modal4" class="modal-trigger">
+                        <i class="material-icons left">code</i>Projects</a></li>  
+                <li class="logged-out" style="display: none;">
+                    <a class="modal-trigger" href="#modal1">
+                        Sign up <i class="material-icons left">account_circle</i></a>
+                </li>
+                <li id="logout" class="logged-in" style="display: none;"><a href="/index.html">
+                        <i class="material-icons left">cloud_off</i>
+                        Log-out</a></li>
+            </ul>
+            <!-- Dropdown Structure -->
+            <ul id="dropdown2" class="dropdown-content">
+                <li><a href="#">
+                        <i class="material-icons left">school</i>
+                        Education</a></li>
+                <li><a href="#">
+                        <i class="material-icons left">lightbulb_outline
+                        </i>
+                        Experience</a></li>
+                <li><a href="#">
+                        <i class="material-icons left">code
+                        </i>
+                        Skills</a></li>
+                <li><a href="#">
+                        <i class="material-icons left">stars
+                        </i>
+                        Hobbies</a></li>
+            </ul>
+        </div>
+        <ul id="slidy" class="sidenav">
+            <li class="logged-in"><a href="#">Home</a></li>
+            <!-- Dropdown Trigger -->
+            <li class="logged-in" style="display: none;"><a class="dropdown-trigger" href="#!" data-target="dropdown1">
+                    <i class="material-icons left">person</i>
+                    About me <i class="material-icons right">arrow_drop_down</i></a></li>
+            <li class="admin" style="display: none;"><a href="#">
+                    <i class="material-icons left">code</i>Projects</a></li>
+            <li class="logged-in">
+                <a href="#modal3" class="modal-trigger">Account</a>
+            </li>
+            <li class="logged-out" style="display: none;">
+                <a href="#modal2" class="modal-trigger ">Login
+                    <i class="material-icons left">account_circle</i>
+                </a>
+            </li>
+            <li class="logged-out" style="display: none;">
+                <a class="modal-trigger" href="#modal1">
+                    Sign up <i class="material-icons left">account_circle</i></a>
+            </li>
+            <li id="logout" class="logged-in" style="display: none;"><a href="/index.html">
+                    <i class="material-icons left">cloud_off</i>
+                    Log-out</a></li>
+
+        </ul>
+        <!-- Dropdown Structure -->
+        <ul id="dropdown1" class="dropdown-content">
+            <li><a href="#">
+                    <i class="material-icons left">school</i>
+                    Education</a></li>
+            <li><a href="#">
+                    <i class="material-icons left">lightbulb_outline
+                    </i>
+                    Experience</a></li>
+            <li><a href="#">
+                    <i class="material-icons left">code
+                    </i>
+                    Skills</a></li>
+            <li><a href="#">
+                    <i class="material-icons left">stars
+                    </i>
+                    Hobbies</a></li>
+        </ul>
+    </nav>
+    <!--Admin form-->
+    <form class=" center-align admin-actions admin" 
+    style="margin: 40px auto; max-width: 300px; display: none;">
+<input type="email" placeholder="user email" id="admin-email">
+<button class="btn large yellow wave-effect wave-darken">Make Admin</button>
+    </form>
+    <!--sign up-->
+    <div id="modal1" class="modal">
+        <div class="container">
+            <form id="signupForm">
+                <div class="row">
+                    <div class="col s12">
+                        <div class="input-fields">
+                            <i class="material-icons">mail</i>
+                            <input type="email" name="signup-email" 
+                            placeholder="Sign up with your Email" required="validate">
+                            <label for="signup-email"></label>
+                        </div>
+                    </div>
+                    <div class="col s12">
+                        <div class="input-fields">
+                            <i class="material-icons">password</i>
+                            <input type="password" name="signup-password" placeholder="secret password" required="validate">
+                            <label for="signup-password"></label>
+                        </div>
+                    </div>
+                    <div class="col s12">
+                        <div class="input-fields">
+                            <i class="material-icons">account_circle</i>
+                            <input type="text" name="signup-bio" placeholder="Bio" required="validate">
+                            <label for="signup-bio"></label>
+                        </div>
+                    </div>
+                    <div class="col s12 l6">
+                        <div class="input-fields">
+                            <button class="btn waves-effect waves-darken">SUBMIT</button>
+                        </div>
+                    </div>
+                </div>
+                <p class="error pink-text center-align"></p>
+            </form>
+           
+        </div>
+    </div>
+
+    <!--Log in Modal-->
+    <!--modal2-->
+    <div class="modal" id="modal2">
+        <div class="container">
+            <form id="loginForm">
+                <div class="row">
+                    <div class="col s12">
+                        <div class="input-fields">
+                            <i class="material-icons">mail</i>
+                            <input type="email" name="login-email" placeholder="Sign up with your Email" required="validate">
+                            <label for="email"></label>
+                        </div>
+                    </div>
+                    <div class="col s12">
+                        <div class="input-fields">
+                            <i class="material-icons">password</i>
+                            <input type="password" name="login-password" placeholder="secret password" required="validate">
+                            <label for="password"></label>
+                        </div>
+                    </div>
+                    <div class="col s12 l6">
+                        <div class="input-fields">
+                            <button class="btn waves-effect waves-darken">SUBMIT
+                                <i class="material-icons">arrow</i>
+                            </button>
+                        </div>
+                    </div>
+                    <p class="red-text"><a href="/reset.html">Forgot password</a></p>
+                </div>
+                <p class="error pink-text center-align"></p>
+            </form>
+        </div>
+    </div>
+    <div class="modal" id="modal3">
+        <div class="container">
+            <h2>Account Details</h2>
+            <p class="Account-details left"></p>
+        </div>
+    </div>
+    <!--Projects-->
+    <!--Create guide-->
+    <div class="modal" id="modal4">
+        <div class="container">
+            <form class="CreateProj">
+                <div class="input-field">
+                    <input type="text" placeholder="Enter frontend proj" name="frontend">
+                </div>
+                <div class="input-field">
+                    <input type="text" placeholder="Enter backend proj" name="backend">
+                </div>
+                <button class="btn large teal center">CREATE</button>
+            </form>
+        </div>
+    </div>
+    <!--Guides-->
+    <div class="container" style="margin-top: 40px;">
+        <ul class="collapsible z-depth-0 projyguides" style="border: none;">
+
+        </ul>
+    </div>
+    <!-- <ul id="projects-list"></ul>
+
+    <div class="domy">
+
+    </div> -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyDbB-JJpWPG528GrE3JZJcerwL1hg8N4mk",
+            authDomain: "smartcoders-240e2.firebaseapp.com",
+            projectId: "smartcoders-240e2",
+            storageBucket: "smartcoders-240e2.appspot.com",
+            messagingSenderId: "401459046800",
+            appId: "1:401459046800:web:3877be2f619bf4f57eeb15"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        const auth = firebase.auth();
+        const functions = firebase.functions();
+  //settings
+    </script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="/index.js"></script>
+    <script src="/data.js"></script>
+</body>
+
+</html>

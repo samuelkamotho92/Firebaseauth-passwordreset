@@ -1,0 +1,14 @@
+body{
+    background-color:wheat;
+}
+div.container{
+    background-color:violet;
+    width: 40vw;
+
+}
+#reset{
+    text-align: center;
+}
+h3{
+    text-align: center;
+}

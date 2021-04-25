@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <!-- The core Firebase JS SDK is always required and must be listed first -->
+     <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-auth.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-functions.js"></script>
+   <!--Import Google Icon Font-->
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   <!--Import materialize.css-->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/reset.css">
+    <title>Password reset</title>
+</head>
+<body>
+    <div class="container light-pink">
+            <h3>Enter Recovery Email</h3>
+        <form id="reset">
+            <div class="row">
+                <div class="col s12">
+                    <div class="input-fields">
+                        <i class="material-icons">mail</i>
+                        <input type="email" id="recovery" 
+                        placeholder="Recovery Email" required="validate">
+                    </div>
+                </div>
+                <div class="col s12">
+                    <div class="input-fields">
+                        <button 
+    class="btn waves-effect waves-darken red text-align center"
+     id="resetbtn">
+            RESET PASSWORD
+            <i class="material-icons">arrow</i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+     <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyDbB-JJpWPG528GrE3JZJcerwL1hg8N4mk",
+            authDomain: "smartcoders-240e2.firebaseapp.com",
+            projectId: "smartcoders-240e2",
+            storageBucket: "smartcoders-240e2.appspot.com",
+            messagingSenderId: "401459046800",
+            appId: "1:401459046800:web:3877be2f619bf4f57eeb15"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        const auth = firebase.auth();
+        const functions = firebase.functions();
+  //settings
+    </script>
+     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="/reset.js"></script>
+</body>
+</html>
